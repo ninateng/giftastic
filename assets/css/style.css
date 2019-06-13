@@ -1,0 +1,50 @@
+
+
+body {
+
+    background: plum;
+
+}
+
+#topics {
+
+    /* margin-left: -245px; */
+    float: left;
+    position: absolute;
+    top: 30px;
+    text-align: center;
+    font-family: monospace;
+
+}
+
+#gif-input {
+
+    font-family: monospace;
+    color: purple;
+    text-shadow: 2px 1.5px 3px purple;
+
+}
+#movie-form {
+
+    text-align: center;
+    font-family: monospace;
+    color: purple;
+    text-shadow: 2px 1.5px 3px purple;
+    font-weight: lighter;
+    width: 100%;   
+    /* margin-right: 25%;
+    margin-left: -95%; 
+    margin-top: -45%; */
+
+}
+
+#add-gif {
+
+    text-align: center;
+    font-family: monospace;
+    color: purple;
+    text-shadow: 2px 1.5px 3px purple;
+    font-weight: lighter;
+    margin-right: -21%;
+
+}

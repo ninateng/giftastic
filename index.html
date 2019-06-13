@@ -4,6 +4,8 @@
 <head>
   <meta charset="utf-8">
   <title>Quoth the Giphy</title>
+    <!-- linking css -->
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
@@ -43,6 +45,7 @@ $("button").on("click", function () {
   //data-person attribute is data person from button...
   var person = $(this).attr("data-person");
   //building query url
+  //working limit
   var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
     person + "&api_key=3zWUyN87dQVmAHhLuPbxtDYwuKkRgZTl&limit=10";
 
