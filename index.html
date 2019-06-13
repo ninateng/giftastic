@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Quoth the Giphy</title>
+</head>
+
+<body>
+  <div id="buttons">
+    <!-- @@@@@@ ....topics div... new buttons will be attatched here  -->
+    <div id="topics"></div>
+  </div>
+
+  <div id="gifs-appear-here">
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- <script src="assets/javascript/giftastic.js"></script> -->
+  <script>
+  
+  
+//--------@@@@@...build function that creates new buttons----///
+var topics = ['shane+dawson','apples','pineapples','oranges'];
+for ( var i = 0; i<topics.length; i++){
+  var buttons = $('<button data-person="' + topics[i] + '">' + topics[i] + '</button>' );
+  buttons.appendTo('#topics');
+}
+
+//--------------------------------------------
+$("button").on("click", function () {
+
+  //this is the button you click
+  //data-person attribute is data person from button...
+  var person = $(this).attr("data-person");
+  //building query url
+  var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
+    person + "&api_key=3zWUyN87dQVmAHhLuPbxtDYwuKkRgZTl&limit=10";
+
+  //communiting with api, 
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+  }) //after you get information.. do this...
+    .then(function (response) {
+      var results = response.data;
+
+      //running forloop of results
+      for (var i = 0; i < results.length; i++) {
+        var gifDiv = $("<div>");
+
+        var rating = results[i].rating;
+
+        var p = $("<p>").text("Rating: " + rating);
+
+        var personImage = $("<img>");
+        personImage.attr("src", results[i].images.fixed_height.url);
+
+        gifDiv.prepend(p);
+        gifDiv.prepend(personImage);
+
+        $("#gifs-appear-here").prepend(gifDiv);
+
+        var state = personImage.attr("data-state", "still");
+
+        if (state === "still") {
+          $(this).attr("src", $(this).attr("data-animate"));
+          $(this).attr("data-state", "animate");
+        }
+        else {
+          $(this).attr("src", $(this).attr("data-still"));
+          $(this).attr("data-state", "still");
+        }
+      }
+
+    });
+
+  // $(".gif").on("click", function () ) {
+
+  //   var state = personImage.attr("data-state", "still");
+
+  //   if (state === "still") {
+  //     $(this).attr("src", $(this).attr("data-animate"));
+  //     $(this).attr("data-state", "animate");
+  //   }
+  //   else {
+  //     $(this).attr("src", $(this).attr("data-still"));
+  //     $(this).attr("data-state", "still");
+  //   }
+  // }
+});
+
+  </script>
+</body>
+
+</html>
