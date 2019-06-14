@@ -48,3 +48,12 @@ body {
     margin-right: -21%;
 
 }
+
+.gify-btn {
+
+    font-family: monospace;
+    color: purple;
+    text-shadow: 2px 1.5px 3px purple;
+    font-weight: lighter;
+
+}
